@@ -9,3 +9,9 @@ Laskimessa 2 tekstikenttää, joihin syötetyt numeroarvot voi ynnätä (+-näpp
 ## Tehtävä 2: Number Guessing Game
 
 Käyttäjän tehtävänä on arvata satunnainen luku yhden ja sadan väliltä. Jokaisen syötteen jälkeen ohjelma kertoo, onko syötetty luku pienempi vai suurempi kuin satunnaisluku. Jos käyttäjä arvaa oikein, tulee näytölle alert oikeasta arvauksesta ja arvausten lukumäärästä, ja ohjelma alkaa uudelleen alusta.
+
+## Tehtävä 3:
+
+## Tehtävä 4:
+
+Ohjelmassa on FlatList-tyyppinen ostoslista, johon käyttäjä voi syöttää tietoja tai tyhjentää sen.
