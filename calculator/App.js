@@ -1,24 +1,49 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, Button, TextInput } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+	StyleSheet,
+	Text,
+	View,
+	Button,
+	TextInput,
+	FlatList
+} from "react-native";
 
 export default function App() {
 	const [valueA, setValueA] = useState();
 	const [valueB, setValueB] = useState();
-	const [result, setResult] = useState();
+	const [result, setResult] = useState("");
+	const [data, setData] = useState([]);
+	const [text, setText] = useState("");
+
+	const showResult = bool => {
+		if (bool) {
+			setResult(addValues());
+			setText(`${valueA} + ${valueB} = `);
+		} else {
+			setResult(subtractValues());
+			setText(`${valueA} - ${valueB} = `);
+		}
+		setValueA();
+		setValueB();
+	};
 
 	const addValues = () => {
-		setResult(parseInt(valueA) + parseInt(valueB));
-		return result;
+		let res = parseInt(valueA) + parseInt(valueB);
+		return res;
 	};
 
 	const subtractValues = () => {
-		setResult(valueA - valueB);
-		return result;
+		let res = valueA - valueB;
+		return res;
 	};
+
+	useEffect(() => {
+		setData([...data, { key: text + result }]);
+	}, [result]);
 
 	return (
 		<View style={styles.container}>
-			<Text style={{ fontSize: 20 }}>Result: {result}</Text>
+			<Text>Result: {result}</Text>
 			<TextInput
 				style={styles.inputField}
 				keyboardType="numeric"
@@ -32,15 +57,21 @@ export default function App() {
 				onChangeText={v => setValueB(v)}
 			/>
 			<View style={styles.containerHorizontal}>
-				<Button onPress={addValues} title="+" />
-				<Button onPress={subtractValues} title="-" />
+				<Button onPress={() => showResult(true)} title="+" />
+				<Button onPress={() => showResult(false)} title="-" />
 			</View>
+			<Text style={{ fontSize: 20, margin: 30 }}>History</Text>
+			<FlatList
+				data={data}
+				renderItem={({ item }) => <Text>{item.key}</Text>}
+			/>
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
 	container: {
+		marginTop: 40,
 		flex: 1,
 		backgroundColor: "#fff",
 		alignItems: "center",
