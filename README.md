@@ -12,6 +12,8 @@ Käyttäjän tehtävänä on arvata satunnainen luku yhden ja sadan väliltä. J
 
 ## Tehtävä 3:
 
+Tehtävä laajentaa tehtävää 1. Laskin hyödyntää FlatList-komponenttia laskuhistorian näyttämiseen.
+
 ## Tehtävä 4:
 
 Ohjelmassa on FlatList-tyyppinen ostoslista, johon käyttäjä voi syöttää tietoja tai tyhjentää sen.
