@@ -5,7 +5,7 @@ import {
 	View,
 	Button,
 	TextInput,
-	FlatList
+	FlatList,
 } from "react-native";
 
 export default function App() {
@@ -15,7 +15,7 @@ export default function App() {
 	const [data, setData] = useState([]);
 	const [text, setText] = useState("");
 
-	const showResult = bool => {
+	const showResult = (bool) => {
 		if (bool) {
 			setResult(addValues());
 			setText(`${valueA} + ${valueB} = `);
@@ -38,7 +38,7 @@ export default function App() {
 	};
 
 	useEffect(() => {
-		setData([...data, { key: text + result }]);
+		setData([...data, { key: String(data.length), text: text + result }]);
 	}, [result]);
 
 	return (
@@ -48,13 +48,13 @@ export default function App() {
 				style={styles.inputField}
 				keyboardType="numeric"
 				value={valueA}
-				onChangeText={v => setValueA(v)}
+				onChangeText={(v) => setValueA(v)}
 			/>
 			<TextInput
 				style={styles.inputField}
 				keyboardType="numeric"
 				value={valueB}
-				onChangeText={v => setValueB(v)}
+				onChangeText={(v) => setValueB(v)}
 			/>
 			<View style={styles.containerHorizontal}>
 				<Button onPress={() => showResult(true)} title="+" />
@@ -63,7 +63,7 @@ export default function App() {
 			<Text style={{ fontSize: 20, margin: 30 }}>History</Text>
 			<FlatList
 				data={data}
-				renderItem={({ item }) => <Text>{item.key}</Text>}
+				renderItem={({ item }) => <Text>{item.text}</Text>}
 			/>
 		</View>
 	);
@@ -75,20 +75,20 @@ const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: "#fff",
 		alignItems: "center",
-		justifyContent: "center"
+		justifyContent: "center",
 	},
 	containerHorizontal: {
 		width: 100,
 		flexDirection: "row",
-		justifyContent: "space-around"
+		justifyContent: "space-around",
 	},
 	inputField: {
 		margin: 10,
 		width: "50%",
 		borderColor: "#ddd",
-		borderWidth: 1
+		borderWidth: 1,
 	},
 	btn: {
-		width: 30
-	}
+		width: 30,
+	},
 });
