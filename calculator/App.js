@@ -13,16 +13,19 @@ export default function App() {
 	const [valueB, setValueB] = useState();
 	const [result, setResult] = useState("");
 	const [data, setData] = useState([]);
-	const [text, setText] = useState("");
 
 	const showResult = (bool) => {
+		let text;
 		if (bool) {
-			setResult(addValues());
-			setText(`${valueA} + ${valueB} = `);
+			const res = addValues();
+			setResult(res);
+			text = `${valueA} + ${valueB} = ${res}`;
 		} else {
-			setResult(subtractValues());
-			setText(`${valueA} - ${valueB} = `);
+			const res = subtractValues();
+			setResult(res);
+			text = `${valueA} - ${valueB} = ${res}`;
 		}
+		setData([...data, { key: String(data.length), text: text }]);
 		setValueA();
 		setValueB();
 	};
@@ -36,10 +39,6 @@ export default function App() {
 		let res = valueA - valueB;
 		return res;
 	};
-
-	useEffect(() => {
-		setData([...data, { key: String(data.length), text: text + result }]);
-	}, [result]);
 
 	return (
 		<View style={styles.container}>
