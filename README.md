@@ -10,10 +10,14 @@ Laskimessa 2 tekstikenttää, joihin syötetyt numeroarvot voi ynnätä (+-näpp
 
 Käyttäjän tehtävänä on arvata satunnainen luku yhden ja sadan väliltä. Jokaisen syötteen jälkeen ohjelma kertoo, onko syötetty luku pienempi vai suurempi kuin satunnaisluku. Jos käyttäjä arvaa oikein, tulee näytölle alert oikeasta arvauksesta ja arvausten lukumäärästä, ja ohjelma alkaa uudelleen alusta.
 
-## Tehtävä 3:
+## Tehtävä 3: Calculator (jatkuu)
 
 Tehtävä laajentaa tehtävää 1. Laskin hyödyntää FlatList-komponenttia laskuhistorian näyttämiseen.
 
-## Tehtävä 4:
+## Tehtävä 4: Shopping List
 
 Ohjelmassa on FlatList-tyyppinen ostoslista, johon käyttäjä voi syöttää tietoja tai tyhjentää sen.
+
+## Tehtävä 5: Calculator (jatkuu)
+
+Laskin ja laskuhistoria on eriytetty Stack Navigatorin avulla erillisille sivuille.

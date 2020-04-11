@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
 	StyleSheet,
 	Text,
@@ -7,8 +7,10 @@ import {
 	TextInput,
 	FlatList,
 } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-export default function App() {
+function HomeScreen({ navigation }) {
 	const [valueA, setValueA] = useState();
 	const [valueB, setValueB] = useState();
 	const [result, setResult] = useState("");
@@ -58,7 +60,19 @@ export default function App() {
 			<View style={styles.containerHorizontal}>
 				<Button onPress={() => showResult(true)} title="+" />
 				<Button onPress={() => showResult(false)} title="-" />
+				<Button
+					onPress={() => navigation.navigate("History", { data: data })}
+					title="History"
+				/>
 			</View>
+		</View>
+	);
+}
+
+function HistoryScreen({ route, navigation }) {
+	const { data } = route.params;
+	return (
+		<View style={styles.container}>
 			<Text style={{ fontSize: 20, margin: 30 }}>History</Text>
 			<FlatList
 				data={data}
@@ -68,18 +82,30 @@ export default function App() {
 	);
 }
 
+const Stack = createStackNavigator();
+
+export default function App() {
+	return (
+		<NavigationContainer>
+			<Stack.Navigator>
+				<Stack.Screen name="Calculator" component={HomeScreen} />
+				<Stack.Screen name="History" component={HistoryScreen} />
+			</Stack.Navigator>
+		</NavigationContainer>
+	);
+}
+
 const styles = StyleSheet.create({
 	container: {
-		marginTop: 40,
 		flex: 1,
 		backgroundColor: "#fff",
 		alignItems: "center",
 		justifyContent: "center",
 	},
 	containerHorizontal: {
-		width: 100,
+		width: "50%",
 		flexDirection: "row",
-		justifyContent: "space-around",
+		justifyContent: "space-between",
 	},
 	inputField: {
 		margin: 10,
