@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "HelloWorld",
+    "name": "Guess the number!",
     "slug": "number-guessing-game",
     "platforms": [
       "ios",
