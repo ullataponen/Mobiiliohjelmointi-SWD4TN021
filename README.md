@@ -1,6 +1,6 @@
 # Mobiiliohjelmointi-SWD4TN021
 
-Repo kurssin Mobiiliohjelmointi SWD4TN021-3008 (kevät 2020) tehtäville
+Repo kurssin Mobiiliohjelmointi SWD4TN021-3008 (kevät 2020) tehtäville. Kurssilla harjoitellaan React Nativen avulla mobiilisovellusten ohjelmointia.
 
 ## Tehtävä 1: Calculator
 
@@ -21,3 +21,11 @@ Ohjelmassa on FlatList-tyyppinen ostoslista, johon käyttäjä voi syöttää ti
 ## Tehtävä 5: Calculator (jatkuu)
 
 Laskin ja laskuhistoria on eriytetty Stack Navigatorin avulla erillisille sivuille.
+
+## Tehtävä 6: Number Guessing Game (jatkuu)
+
+Ohjelma näyttää AsyncStoragen avulla parhaan arvaustuloksen.
+
+## Tehtävä 7: Recipe Finder
+
+Ohjelman avulla voi etsiä reseptejä Recipe Puppy API:sta. Ohjelma näyttää hakutuloksissa tuotekuvan ja tuotteen nimen, joka on linkki reseptiin.
