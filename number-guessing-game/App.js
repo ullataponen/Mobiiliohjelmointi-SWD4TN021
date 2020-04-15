@@ -17,7 +17,11 @@ export default function App() {
 	const [randomNumber, setRandomNumber] = useState(
 		Math.floor(Math.random() * 100) + 1
 	);
-	let top;
+	const [top, setTop] = useState();
+
+	useEffect(() => {
+		setAndFetchAsync();
+	}, [top]);
 
 	const checkMatch = () => {
 		setCounter(counter + 1);
@@ -26,44 +30,45 @@ export default function App() {
 			setText(`Your guess ${value} is too small`);
 		} else if (value > randomNumber) {
 			setText(`Your guess ${value} is too big`);
-		} else {
+		} else if (value == randomNumber) {
 			Alert.alert(
 				`Correct number! You guessed the number in ${counter} guesses.`
 			);
 			checkIfTop(counter);
-			top = getHighScore().then((result) => result.data);
 			console.log("top,", top, typeof top);
 			setRandomNumber(Math.floor(Math.random() * 100) + 1);
 			setCounter(1);
 			setText("Guess a number between 1-100");
 		}
 		setValue();
-		return text;
 	};
 
 	const checkIfTop = async (counter) => {
-		console.log("this is top", top, typeof top);
-		if (top === undefined || top === NaN || counter < top) {
-			await setHighScore(counter);
+		try {
+			if (top === undefined || top === NaN || counter < top) {
+				await AsyncStorage.setItem("HighScore", JSON.stringify(counter));
+			}
+		} catch (e) {
+			Alert.alert("Error saving data");
+		}
+		try {
+			let fetchValue = await AsyncStorage.getItem("HighScore");
+			setTop(JSON.parse(fetchValue));
+		} catch (e) {
+			Alert.alert("Error reading data");
 		}
 	};
 
-	setHighScore = async (val) => {
-		console.log("Now sethighscore runs", val, typeof val);
+	const setAndFetchAsync = async () => {
 		try {
-			let item = await AsyncStorage.setItem("HighScore", JSON.stringify(val));
-			console.log("item", item, typeof item);
+			let item = await AsyncStorage.setItem("HighScore", JSON.stringify(top));
 			return item;
 		} catch (e) {
 			Alert.alert("Error saving data");
 		}
-	};
-
-	getHighScore = async () => {
 		try {
 			const value = await AsyncStorage.getItem("HighScore");
-			const jsonVal = JSON.parse(value);
-			console.log("this is gethiscore", jsonVal, typeof jsonVal);
+			setTop(JSON.parse(value));
 			return jsonVal;
 		} catch (error) {
 			Alert.alert("Error reading data");
