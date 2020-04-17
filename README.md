@@ -29,3 +29,7 @@ Ohjelma näyttää AsyncStoragen avulla parhaan arvaustuloksen.
 ## Tehtävä 7: Recipe Finder
 
 Ohjelman avulla voi etsiä reseptejä Recipe Puppy API:sta. Ohjelma näyttää hakutuloksissa tuotekuvan ja tuotteen nimen, joka on linkki reseptiin.
+
+## Tehtävä 8: Euro Converter
+
+Ohjelma kääntää muita valuuttoja euroksi. Käyttäjä syöttää haluamansa rahamäärän ja valuutan, jonka haluaa muuttaa euroiksi.
