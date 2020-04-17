@@ -20,8 +20,18 @@ export default function App() {
 	const [top, setTop] = useState();
 
 	useEffect(() => {
-		setAndFetchAsync();
-	}, [top]);
+		fetchAsync();
+	}, []);
+
+	const fetchAsync = async () => {
+		try {
+			const value = await AsyncStorage.getItem("HighScore");
+			setTop(JSON.parse(value));
+			return jsonVal;
+		} catch (error) {
+			Alert.alert("Error reading data");
+		}
+	};
 
 	const checkMatch = () => {
 		setCounter(counter + 1);
@@ -35,7 +45,6 @@ export default function App() {
 				`Correct number! You guessed the number in ${counter} guesses.`
 			);
 			checkIfTop(counter);
-			console.log("top,", top, typeof top);
 			setRandomNumber(Math.floor(Math.random() * 100) + 1);
 			setCounter(1);
 			setText("Guess a number between 1-100");
@@ -55,22 +64,6 @@ export default function App() {
 			let fetchValue = await AsyncStorage.getItem("HighScore");
 			setTop(JSON.parse(fetchValue));
 		} catch (e) {
-			Alert.alert("Error reading data");
-		}
-	};
-
-	const setAndFetchAsync = async () => {
-		try {
-			let item = await AsyncStorage.setItem("HighScore", JSON.stringify(top));
-			return item;
-		} catch (e) {
-			Alert.alert("Error saving data");
-		}
-		try {
-			const value = await AsyncStorage.getItem("HighScore");
-			setTop(JSON.parse(value));
-			return jsonVal;
-		} catch (error) {
 			Alert.alert("Error reading data");
 		}
 	};
