@@ -33,3 +33,7 @@ Ohjelman avulla voi etsiä reseptejä Recipe Puppy API:sta. Ohjelma näyttää h
 ## Tehtävä 8: Euro Converter
 
 Ohjelma kääntää muita valuuttoja euroksi. Käyttäjä syöttää haluamansa rahamäärän ja valuutan, jonka haluaa muuttaa euroiksi.
+
+## Tehtävä 9: Find Address
+
+Kartta-laajennus näyttää oletusarvoisesti Helsingin kartalla, käyttäjä syöttää haluamansa osoitteen ja sovellus näyttää sen karttasijainnilla.
