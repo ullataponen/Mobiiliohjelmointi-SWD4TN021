@@ -37,3 +37,7 @@ Ohjelma kääntää muita valuuttoja euroksi. Käyttäjä syöttää haluamansa 
 ## Tehtävä 9: Find Address
 
 Kartta-laajennus näyttää oletusarvoisesti Helsingin kartalla, käyttäjä syöttää haluamansa osoitteen ja sovellus näyttää sen karttasijainnilla.
+
+## Tehtävä 11: Find Address (jatkuu)
+
+Karttalaajennus hakee nyt käynnistämisen jälkeen käyttäjän sijainnin ja näyttää sen kartalla. Muut toiminnot samat kuin tehtävässä 9 (huom. haettavia sijainteja ei enää tallenneta listana, vaan ainoastaan ensimmäinen hakutulosta vastaava sijainti tallennetaan).
