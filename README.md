@@ -38,6 +38,11 @@ Ohjelma kääntää muita valuuttoja euroksi. Käyttäjä syöttää haluamansa 
 
 Kartta-laajennus näyttää oletusarvoisesti Helsingin kartalla, käyttäjä syöttää haluamansa osoitteen ja sovellus näyttää sen karttasijainnilla.
 
+## Tehtävä 10: Restaurant Finder
+
+Sovellus avautuu karttanäkymään, jossa näkyy käyttäjän nykyinen sijainti. Osoitteen syöttämällä käyttäjä näkee ravintolat 1,5 km säteellä annetusta osoitteesta.
+_Google nearby -API antaa satunnaisesti hakuquota käytetty -virheviestin, eikä hae ravintoloita. Tässä tilanteessa uusi haku yleensä auttaa._
+
 ## Tehtävä 11: Find Address (jatkuu)
 
 Karttalaajennus hakee nyt käynnistämisen jälkeen käyttäjän sijainnin ja näyttää sen kartalla. Muut toiminnot samat kuin tehtävässä 9 (huom. haettavia sijainteja ei enää tallenneta listana, vaan ainoastaan ensimmäinen hakutulosta vastaava sijainti tallennetaan).
