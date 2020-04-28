@@ -5,7 +5,7 @@ import {
 	View,
 	TextInput,
 	Button,
-	FlatList
+	FlatList,
 } from "react-native";
 
 export default function App() {
@@ -31,17 +31,17 @@ export default function App() {
 					borderColor: "#999",
 					borderRadius: 8,
 					marginTop: 100,
-					marginBottom: 30
+					marginBottom: 30,
 				}}
 				value={text}
-				onChangeText={text => setText(text)}
+				onChangeText={(text) => setText(text)}
 				placeholder="Add items to your shopping list"
 			/>
 			<View
 				style={{
 					flexDirection: "row",
 					width: "50%",
-					justifyContent: "space-between"
+					justifyContent: "space-between",
 				}}
 			>
 				<Button onPress={addToList} title="Add to list" />
@@ -62,11 +62,11 @@ const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: "#fff",
 		alignItems: "center",
-		justifyContent: "center"
+		justifyContent: "center",
 	},
 	heading: {
 		fontSize: 20,
 		color: "salmon",
-		margin: 30
-	}
+		margin: 30,
+	},
 });

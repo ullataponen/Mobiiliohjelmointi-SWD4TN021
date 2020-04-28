@@ -46,3 +46,7 @@ _Google nearby -API antaa satunnaisesti hakuquota käytetty -virheviestin, eikä
 ## Tehtävä 11: Find Address (jatkuu)
 
 Karttalaajennus hakee nyt käynnistämisen jälkeen käyttäjän sijainnin ja näyttää sen kartalla. Muut toiminnot samat kuin tehtävässä 9 (huom. haettavia sijainteja ei enää tallenneta listana, vaan ainoastaan ensimmäinen hakutulosta vastaava sijainti tallennetaan).
+
+## Tehtävä 12: Shopping List with DB
+
+Hyödynnetään Expon SQLite-komponenttia ostoslistan tallentamiseen. Yksittäisiä listan tuotteita voi myös poistaa.
