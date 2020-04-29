@@ -50,3 +50,7 @@ Karttalaajennus hakee nyt käynnistämisen jälkeen käyttäjän sijainnin ja n�
 ## Tehtävä 12: Shopping List with DB
 
 Hyödynnetään Expon SQLite-komponenttia ostoslistan tallentamiseen. Yksittäisiä listan tuotteita voi myös poistaa.
+
+## Tehtävä 13: Shopping List with DB (jatkuu)
+
+Ohjelman tyyliä on parannettu React Native Elementsin avulla.

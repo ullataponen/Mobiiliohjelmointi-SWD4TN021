@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from "react";
 import * as SQLite from "expo-sqlite";
-import {
-	StyleSheet,
-	Text,
-	View,
-	TextInput,
-	Button,
-	FlatList,
-} from "react-native";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
+import { Header, Input, Button, ListItem } from "react-native-elements";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 export default function App() {
 	const [product, setProduct] = useState("");
@@ -54,48 +49,56 @@ export default function App() {
 	const deleteItem = (id) => {
 		db.transaction(
 			(tx) => {
-				tx.executeSql("delete from list where id = ?;", [id]);
+				tx.executeSql(`delete from list where id = ?;`, [id]);
 			},
 			(e) => console.log("Error", e),
 			updateList
 		);
 	};
 
-	const listSeparator = () => {
-		return <View style={styles.separator}></View>;
-	};
-
 	return (
 		<View style={styles.container}>
-			<TextInput
-				style={styles.textInput}
-				value={product}
-				onChangeText={(prod) => setProduct(prod)}
-				placeholder="Product"
+			<Header
+				centerComponent={{ text: "SHOPPING LIST", style: { color: "#fff" } }}
 			/>
-			<TextInput
-				style={styles.textInput}
-				value={amount}
-				onChangeText={(amt) => setAmount(amt)}
-				placeholder="Amount"
-			/>
-			<Button onPress={saveItem} title="SAVE" />
-
-			<Text style={styles.heading}>Shopping list</Text>
-			<FlatList
-				keyExtractor={(item) => item.id.toString()}
-				data={data}
-				renderItem={({ item }) => (
-					<View style={styles.itemLine}>
-						<Text style={styles.item}>{item.product}</Text>
-						<Text style={styles.item}>{item.amount}</Text>
-						<Text style={styles.deleteBtn} onPress={() => deleteItem(item.id)}>
-							Delete
-						</Text>
-					</View>
-				)}
-				ItemSeparatorComponent={listSeparator}
-			/>
+			<View style={styles.textInput}>
+				<Input
+					label="Product"
+					value={product}
+					onChangeText={(prod) => setProduct(prod)}
+					placeholder="e.g. Milk"
+				/>
+				<Input
+					label="Amount"
+					value={amount}
+					onChangeText={(amt) => setAmount(amt)}
+					placeholder="e.g. 1 l"
+				/>
+			</View>
+			<View style={styles.button}>
+				<Button
+					onPress={saveItem}
+					title="SAVE"
+					buttonStyle={{
+						backgroundColor: "teal",
+					}}
+					raised
+					icon={{ name: "save", color: "#fff" }}
+				/>
+			</View>
+			<ScrollView style={styles.listItem}>
+				{data.map((item, i) => (
+					<ListItem
+						key={i}
+						title={item.product}
+						subtitle={item.amount}
+						rightIcon={{ name: "delete" }}
+						chevron
+						onPress={() => deleteItem(item.id)}
+						bottomDivider
+					/>
+				))}
+			</ScrollView>
 		</View>
 	);
 }
@@ -106,41 +109,17 @@ const styles = StyleSheet.create({
 		backgroundColor: "#fff",
 		alignItems: "center",
 		justifyContent: "center",
-		paddingTop: 50,
-	},
-	heading: {
-		fontSize: 20,
-		fontFamily: "monospace",
-		color: "limegreen",
-		margin: 30,
 	},
 	textInput: {
-		width: "60%",
-		borderWidth: 1,
-		borderColor: "#999",
-		borderRadius: 8,
-		margin: 10,
-		paddingLeft: 5,
-	},
-	itemLine: {
-		flexDirection: "row",
-		justifyContent: "space-between",
-		alignItems: "center",
-	},
-	item: {
-		margin: 10,
-	},
-	deleteBtn: {
-		color: "red",
-		borderColor: "red",
-		borderWidth: 2,
-		borderRadius: 5,
-		padding: 5,
-		marginLeft: 10,
-	},
-	separator: {
-		height: 1,
 		width: "100%",
-		backgroundColor: "#eee",
+		marginTop: 20,
+	},
+	button: {
+		width: "80%",
+		marginBottom: 20,
+	},
+	listItem: {
+		flex: 1,
+		width: "100%",
 	},
 });
