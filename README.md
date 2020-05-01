@@ -54,3 +54,9 @@ Hyödynnetään Expon SQLite-komponenttia ostoslistan tallentamiseen. Yksittäis
 ## Tehtävä 13: Shopping List with DB (jatkuu)
 
 Ohjelman tyyliä on parannettu React Native Elementsin avulla.
+
+## Tehtävä 14: My Places
+
+Käyttäjä syöttää osoitteita, jotka tulevat näkyviin alle listaan. Kun käyttäjä painaa osoitetta, siirtyy sovellus karttanäkymään, jossa näkyy kyseinen osoite kartalla. Kun käyttäjä painaa osoitetta pitkään, se poistuu listalta.
+
+Listan tallentamisessa hyödynnetty Expon SQLite-komponenttia, ulkonäön muotoilussa React Native Elements -komponenttia ja karttanäkymässä MapView-komponenttia ja MapQuest APIa.
