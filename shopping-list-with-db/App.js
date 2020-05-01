@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as SQLite from "expo-sqlite";
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import { StyleSheet, Text, View, ScrollView, FlatList } from "react-native";
 import { Header, Input, Button, ListItem } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 
@@ -86,19 +86,22 @@ export default function App() {
 					icon={{ name: "save", color: "#fff" }}
 				/>
 			</View>
-			<ScrollView style={styles.listItem}>
-				{data.map((item, i) => (
-					<ListItem
-						key={i}
-						title={item.product}
-						subtitle={item.amount}
-						rightIcon={{ name: "delete" }}
-						chevron
-						onPress={() => deleteItem(item.id)}
-						bottomDivider
-					/>
-				))}
-			</ScrollView>
+			<View style={styles.listItem}>
+				<FlatList
+					keyExtractor={(item) => item.id.toString()}
+					data={data}
+					renderItem={({ item }) => (
+						<ListItem
+							title={item.product}
+							subtitle={item.amount}
+							rightIcon={{ name: "delete" }}
+							chevron
+							onPress={() => deleteItem(item.id)}
+							bottomDivider
+						/>
+					)}
+				/>
+			</View>
 		</View>
 	);
 }
